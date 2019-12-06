@@ -1,5 +1,5 @@
  import System.IO;
- var fileName = "/data/allposts.min.txt";
+ var fileName = "/yihui_says/data/allposts.min.txt";
   
  function Start () {
  
