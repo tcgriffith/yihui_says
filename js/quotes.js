@@ -1,12 +1,6 @@
 
  function Start () {
- 
-      // read from filename
-     var sr = new StreamReader(fileName);
-     var fileContents = sr.ReadToEnd();
-     sr.Close();
-  
-      // put data from filename into a variable
+
      var mydata = [
 
     '> 美丽的花开了，可它也会有一天凋谢  ',
