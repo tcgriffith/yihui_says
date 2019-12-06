@@ -1,7 +1,7 @@
 ## Relative path used, run this script in bin/
 
-blogcontent=../data/allposts.txt
-blogcontentcln=../data/allposts.min.txt
+blogcontent=/tmp/_allposts.txt
+blogcontentcln=/tmp/_allposts.min.txt
 tmpjs=../js/quotes2.js # our quote generator
 # tmpjs2=../js/quotes.js 
 
@@ -25,7 +25,7 @@ cat $blogcontent |grep -v "^[title|date|slug|\\\-\\\-\\\-]" |grep "^>"  |sed "s/
 echo " var mydata = [" > $tmpjs
 cat $blogcontentcln |awk '{if (length($0) >10) printf "\"%s\",\n",$0}' >> $tmpjs
 echo "]" >> $tmpjs
-cat $tmpjs2 >> $tmpjs
+# cat $tmpjs2 >> $tmpjs
 
 echo "
  function Start () {
@@ -36,5 +36,5 @@ echo "
  Start();" >> $tmpjs
 
 
-rm -rf /tmp/_tmpdir
+rm -rf /tmp/_tmpdir $blogcontentcln $blogcontent
 
