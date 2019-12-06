@@ -14,8 +14,8 @@
      ]
  
      // pick a random number between 1 and 10
-     var myrandom = Random.Range(0,mydata.Length);
-     print(mydata[myrandom]);
+     var myrandom = Math.floor( Math.random() * (mydata.length));
+     document.getElementById('quotedisplay').innerHTML = mydata[myrandom]
  }
 
  Start();
