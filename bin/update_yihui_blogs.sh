@@ -11,26 +11,42 @@ tmpjs=../js/quotes2.js # our quote generator
 
 mkdir -p /tmp/_tmpdir
 git clone https://github.com/rbind/yihui /tmp/_tmpdir
-cat /tmp/_tmpdir/content/cn/2*.md > $blogcontent
+# cat /tmp/_tmpdir/content/cn/2*.md > $blogcontent
+
+
+
+
+has_quote=/tmp/_hasquote.txt
+grep -l "^>" /tmp/_tmpdir/content/cn/2*.md > $has_quote
+while read fn;do
+
+# printf '{quote: "%s", source: "%s" }'
+
+title=$(cat $fn|grep "^title:" |head -1 |sed 's/title: //')
+
+cat $fn |grep "^> " |sed "s/^> //" |sed "s/\"//g" |awk -v var="${fn%.md}" -v title="$title" '{if (length($0) >10) printf "{quote: \"%s\", title: \"%s\"},\n",$0,title}'  >> $blogcontentcln
+
+done < $has_quote
 
 
 
 # extract quotes
 
-cat $blogcontent |grep -v "^[title|date|slug|\\\-\\\-\\\-]" |grep "^>"  |sed "s/\"//g" > $blogcontentcln
+# cat $blogcontent |grep -v "^[title|date|slug|\\\-\\\-\\\-]" |grep "^>"  |sed "s/\"//g" > $blogcontentcln
 
 
 # generate the quote generator
 
 echo " var mydata = [" > $tmpjs
-cat $blogcontentcln |awk '{if (length($0) >10) printf "\"%s\",\n",$0}' >> $tmpjs
+cat $blogcontentcln >> $tmpjs
 echo "]" >> $tmpjs
 # cat $tmpjs2 >> $tmpjs
 
 echo "
  function Start () {
      var myrandom = Math.floor( Math.random() * (mydata.length));
-     document.getElementById('quotedisplay').innerHTML = mydata[myrandom]
+     document.getElementById('quotedisplay').innerHTML = mydata[myrandom].quote
+     document.getElementById('quotedtitle').innerHTML = '-'+mydata[myrandom].title
  }
 
  Start();" >> $tmpjs
