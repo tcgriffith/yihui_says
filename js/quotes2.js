@@ -15,7 +15,7 @@
 
  function Start () {
      var myrandom = Math.floor( Math.random() * (mydata.length));
-     document.getElementById('quotedisplay').innerHTML = mydata[myrandom].author + " " + mydata[myrandom].author.mids
+     document.getElementById('quotedisplay').innerHTML = "<p>" mydata[myrandom].author + "</p><br><p>" + mydata[myrandom].mids +"</p>"
  }
 
  Start();
