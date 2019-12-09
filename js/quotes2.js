@@ -538,7 +538,7 @@
 {quote: "I don't know.  ", title: "Hot Hot Hot"},
 {quote: "Middle age is when your broad mind and narrow waist begin to change places.", title: "Hot Hot Hot"},
 {quote: "--- E. Joseph Crossman", title: "Hot Hot Hot"},
-{quote: "Zhongguancun Da Jie... Orz & `*__________*////`", title: "'"Big" Street'"},
+{quote: "Zhongguancun Da Jie... Orz & `*__________*////`", title: "'Big Street'"},
 {quote: "Damn you! What on earth do you want to eat?! Just go shopping for yourself!", title: "The Rabbit Fishing Again"},
 {quote: "It is proven that the celebration of birthdays is healthy. Statistics show that those people who celebrate the most birthdays become the oldest. ", title: "Statistical Inference and Common Sense"},
 {quote: "--- From [GARY C. RAMSEYER'S FIRST INTERNET GALLERY OF STATISTICS JOKES](http://www.ilstu.edu/~gcramsey/Fisher.html) ", title: "Statistical Inference and Common Sense"},

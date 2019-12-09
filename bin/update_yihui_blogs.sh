@@ -22,7 +22,7 @@ while read fn;do
 
 # printf '{quote: "%s", source: "%s" }'
 
-title=$(cat $fn|grep "^title:" |head -1 |sed 's/title: //')
+title=$(cat $fn|grep "^title:" |head -1 |sed 's/title: //'|sed "s/\"//g")
 
 cat $fn |grep "^> " |sed "s/^> //" |sed "s/\"//g" |awk -v var="${fn%.md}" -v title="$title" '{if (length($0) >10) printf "{quote: \"%s\", title: \"%s\"},\n",$0,title}'  >> $blogcontentcln
 
