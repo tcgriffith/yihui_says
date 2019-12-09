@@ -22,9 +22,13 @@ while read fn;do
 
 # printf '{quote: "%s", source: "%s" }'
 
+bnfn=$(basename $fn)
+
 title=$(cat $fn|grep "^title:" |head -1 |sed 's/title: //'|sed "s/\"//g")
 
-cat $fn |grep "^> " |sed "s/^> //" |sed "s/\"//g" |awk -v var="${fn%.md}" -v title="$title" '{if (length($0) >10) printf "{quote: \"%s\", title: \"%s\"},\n",$0,title}'  >> $blogcontentcln
+url=https://yihui.org/cn/$(echo $bnfn|sed -E "s/^(....)-(..)-(..)-(.*).md/\\1\/\\2\/\\4/")
+
+cat $fn |grep "^> " |sed "s/^> //" |sed "s/\"//g" |awk -v url="$url" -v title="$title" '{if (length($0) >10) printf "{quote: \"%s\", title: \"%s\", url: \"%s\"},\n",$0,title,url}'  >> $blogcontentcln
 
 done < $has_quote
 
@@ -47,6 +51,7 @@ echo "
      var myrandom = Math.floor( Math.random() * (mydata.length));
      document.getElementById('quotedisplay').innerHTML = mydata[myrandom].quote
      document.getElementById('quotedtitle').innerHTML = '-'+mydata[myrandom].title
+     document.getElementById('quotedtitle').setAttribute('href', mydata[myrandom].url);
  }
 
  Start();" >> $tmpjs
