@@ -50,8 +50,8 @@ echo "
  function Start () {
      var myrandom = Math.floor( Math.random() * (mydata.length));
      document.getElementById('quotedisplay').innerHTML = mydata[myrandom].quote
-     document.getElementById('quotedtitle').innerHTML = '-'+mydata[myrandom].title
-     document.getElementById('quotedtitle').setAttribute('href', mydata[myrandom].url);
+     document.getElementById('quotedtitle').innerHTML = '- '+mydata[myrandom].title
+     document.getElementById('quotedlink').setAttribute('href', mydata[myrandom].url);
  }
 
  Start();" >> $tmpjs
